@@ -1,0 +1,17 @@
+{
+  "name": "Mik Seifador Remoto",
+  "short_name": "Mik Remoto",
+  "description": "Controle do painel ao vivo do Mik Seifador (REAPER) pelo celular, em tempo real.",
+  "start_url": "../mikseifador.html?v=1.9c",
+  "scope": "../",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "any",
+  "background_color": "#0c0e12",
+  "theme_color": "#0c0e12",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "icone-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icone-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

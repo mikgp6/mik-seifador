@@ -1,0 +1,59 @@
+SCR 4 0 MT_PAINEL "Custom: MT - Painel ao vivo" "MultitrackAoVivo\painel_ao_vivo.lua"
+SCR 4 0 MT_MOTOR "Custom: MT - Motor ao vivo (deixar rodando)" "MultitrackAoVivo\motor_ao_vivo.lua"
+SCR 4 0 MT_PLAY_PAUSE "Custom: MT - Play / Pause" "MultitrackAoVivo\play_pause.lua"
+SCR 4 0 MT_PARAR "Custom: MT - Stop (volta ao início da música)" "MultitrackAoVivo\parar.lua"
+SCR 4 0 MT_PROXIMA_SECAO "Custom: MT - Próxima seção" "MultitrackAoVivo\proxima_secao.lua"
+SCR 4 0 MT_SECAO_ANTERIOR "Custom: MT - Seção anterior" "MultitrackAoVivo\secao_anterior.lua"
+SCR 4 0 MT_PROXIMA_MUSICA "Custom: MT - Próxima música" "MultitrackAoVivo\proxima_musica.lua"
+SCR 4 0 MT_MUSICA_ANTERIOR "Custom: MT - Música anterior" "MultitrackAoVivo\musica_anterior.lua"
+SCR 4 0 MT_AUTO "Custom: MT - AUTO (liga/desliga)" "MultitrackAoVivo\toggle_auto.lua"
+SCR 4 0 MT_HOLD "Custom: MT - HOLD (liga/desliga)" "MultitrackAoVivo\toggle_hold.lua"
+SCR 4 0 MT_LOOP "Custom: MT - LOOP da seção (liga/desliga)" "MultitrackAoVivo\toggle_loop_secao.lua"
+SCR 4 0 MT_SOLO_CLICK "Custom: MT - SOLO CLICK (liga/desliga)" "MultitrackAoVivo\solo_click.lua"
+SCR 4 0 MT_REPETIR_CLICK "Custom: MT - REPETIR CLICK (liga/desliga)" "MultitrackAoVivo\repetir_click.lua"
+SCR 4 0 MT_PAD "Custom: MT - PAD no tom (liga/desliga)" "MultitrackAoVivo\toggle_pad.lua"
+SCR 4 0 MT_TOM_MAIS "Custom: MT - TOM + (sobe 1 semitom)" "MultitrackAoVivo\tom_mais.lua"
+SCR 4 0 MT_TOM_MENOS "Custom: MT - TOM - (desce 1 semitom)" "MultitrackAoVivo\tom_menos.lua"
+SCR 4 0 MT_TOM_ZERAR "Custom: MT - Tom original" "MultitrackAoVivo\tom_zerar.lua"
+SCR 4 0 MT_DEFINIR_TOM "Custom: MT - Definir tom original da música" "MultitrackAoVivo\definir_tom.lua"
+SCR 4 0 MT_MODO_AO_VIVO "Custom: MT - Saídas: modo AO VIVO" "MultitrackAoVivo\modo_ao_vivo.lua"
+SCR 4 0 MT_MODO_LR "Custom: MT - Saídas: modo L/R" "MultitrackAoVivo\modo_lr.lua"
+SCR 4 0 MT_LR_COM_CLICK "Custom: MT - Saídas: L/R com click (liga/desliga)" "MultitrackAoVivo\modo_lr_com_click.lua"
+SCR 4 0 MT_SALTO_SUAVE "Custom: MT - Salto suave no fim do compasso (liga/desliga)" "MultitrackAoVivo\toggle_salto_suave.lua"
+SCR 4 0 MT_IMPORTAR "Custom: MT - Importar multitrack (pasta da música)" "MultitrackAoVivo\importar_multitrack.lua"
+SCR 4 0 MT_MARCAR_SECAO "Custom: MT - Marcar seção aqui" "MultitrackAoVivo\marcar_secao.lua"
+SCR 4 0 MT_SALVAR_MARCADORES "Custom: MT - Salvar marcadores da música" "MultitrackAoVivo\salvar_marcadores.lua"
+SCR 4 0 MT_COLORIR_SECOES "Custom: MT - Colorir seções pelo nome" "MultitrackAoVivo\colorir_secoes.lua"
+SCR 4 0 MT_PREPARAR "Custom: MT - Preparar/reparar estrutura do projeto" "MultitrackAoVivo\preparar_projeto.lua"
+SCR 4 0 MT_RENOMEAR_SECAO "Custom: MT - Renomear seção atual" "MultitrackAoVivo\renomear_secao.lua"
+SCR 4 0 MT_GERAR_CLICK_GUIA "Custom: MT - Gerar click + guia + seções + cifra (música atual)" "MultitrackAoVivo\gerar_click_guia_cifra.lua"
+SCR 4 0 MT_CORRIGIR_BPM "Custom: MT - Corrigir BPM / compasso da música atual" "MultitrackAoVivo\corrigir_bpm.lua"
+SCR 4 0 MT_SEPARAR_TRILHAS "Custom: MT - Separar trilhas (bateria, baixo, voz) da música atual" "MultitrackAoVivo\separar_trilhas.lua"
+SCR 4 0 MT_VOLTAR_ORIGINAL "Custom: MT - Voltar para a música original (tirar trilhas separadas)" "MultitrackAoVivo\voltar_musica_original.lua"
+SCR 4 0 MT_INSTALAR_MOTOR "Custom: MT - Instalar motor de separação de trilhas" "MultitrackAoVivo\instalar_motor_separacao.lua"
+KEY 1 120 _MT_PAINEL 0
+KEY 1 119 _MT_MOTOR 0
+KEY 1 32 _MT_PLAY_PAUSE 0
+KEY 1 13 _MT_PARAR 0
+KEY 1 32807 _MT_PROXIMA_SECAO 0
+KEY 1 32805 _MT_SECAO_ANTERIOR 0
+KEY 1 32802 _MT_PROXIMA_MUSICA 0
+KEY 1 32801 _MT_MUSICA_ANTERIOR 0
+KEY 1 65 _MT_AUTO 0
+KEY 1 72 _MT_HOLD 0
+KEY 1 76 _MT_LOOP 0
+KEY 1 67 _MT_SOLO_CLICK 0
+KEY 1 82 _MT_REPETIR_CLICK 0
+KEY 1 80 _MT_PAD 0
+KEY 1 107 _MT_TOM_MAIS 0
+KEY 1 109 _MT_TOM_MENOS 0
+KEY 1 96 _MT_TOM_ZERAR 0
+KEY 1 84 _MT_DEFINIR_TOM 0
+KEY 1 116 _MT_MODO_AO_VIVO 0
+KEY 1 117 _MT_MODO_LR 0
+KEY 1 118 _MT_LR_COM_CLICK 0
+KEY 1 81 _MT_SALTO_SUAVE 0
+KEY 13 73 _MT_IMPORTAR 0
+KEY 1 77 _MT_MARCAR_SECAO 0
+KEY 25 83 _MT_SALVAR_MARCADORES 0
+KEY 13 69 _MT_SEPARAR_TRILHAS 0

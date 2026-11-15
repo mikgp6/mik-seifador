@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Mik Seifador Remoto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0c0e12">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Mik Remoto">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<link rel="manifest" href="mikseifador/manifest.json?v=1.9c">
+<link rel="icon" type="image/png" sizes="192x192" href="mikseifador/icone-192.png">
+<link rel="apple-touch-icon" href="mikseifador/icone-180.png">
+<link rel="stylesheet" href="mikseifador/app.css?v=1.9c">
+</head>
+<body>
+<div id="capa" role="status" aria-live="polite">
+  <svg id="capa-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" aria-label="Mik Seifador 1.8">
+  <defs>
+   <radialGradient id="cp-aro" cx="50%" cy="42%" r="60%"><stop offset="0" stop-color="#dadde0"/><stop offset=".85" stop-color="#9aa0a5"/><stop offset="1" stop-color="#4c5257"/></radialGradient>
+   <radialGradient id="cp-miolo" cx="50%" cy="38%" r="60%"><stop offset="0" stop-color="#1f262a"/><stop offset="1" stop-color="#0a0d0f"/></radialGradient>
+   <linearGradient id="cp-cap" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f6f8"/><stop offset=".5" stop-color="#a4aab0"/><stop offset=".5" stop-color="#c9cdd1"/><stop offset="1" stop-color="#6e747a"/></linearGradient>
+   <linearGradient id="cp-onda" x1="0" x2="1"><stop offset="0" stop-color="#2ec4b6"/><stop offset="1" stop-color="#38f98c"/></linearGradient>
+   <linearGradient id="cp-metal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset=".5" stop-color="#d5d9dc"/><stop offset=".52" stop-color="#5c6267"/><stop offset=".6" stop-color="#8c9297"/><stop offset="1" stop-color="#b8bec2"/></linearGradient>
+   <filter id="cp-brilho" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+   <filter id="cp-halo" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="12"/></filter>
+  <linearGradient id="cp-varre" x1="0" x2="1"><stop offset="0" stop-color="#e6fff4" stop-opacity="0"/><stop offset=".5" stop-color="#e6fff4" stop-opacity=".85"/><stop offset="1" stop-color="#e6fff4" stop-opacity="0"/></linearGradient>
+   <clipPath id="cp-clipnome"><text x="300" y="318" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="64">MIK SEIFADOR</text></clipPath>
+  </defs>
+  <circle cx="300" cy="130" r="116" fill="#2ec4b6" opacity=".18" filter="url(#cp-halo)"/>
+  <circle cx="303" cy="137" r="106" fill="#000" opacity=".55"/>
+  <g class="c-emb"><circle cx="300" cy="130" r="104" fill="url(#cp-aro)"/>
+  <circle cx="300" cy="130" r="93.6" fill="url(#cp-miolo)"/>
+  <circle cx="300" cy="130" r="87.4" fill="none" stroke="#2ec4b6" stroke-opacity=".5" stroke-width="1.5"/>
+  <rect x="254.8" y="75.9" width="7.3" height="108.2" rx="3" fill="#000"/><line x1="245.9" y1="82.2" x2="250.6" y2="82.2" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="94.1" x2="250.6" y2="94.1" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="106.1" x2="250.6" y2="106.1" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="118.0" x2="250.6" y2="118.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="130.0" x2="250.6" y2="130.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="142.0" x2="250.6" y2="142.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="153.9" x2="250.6" y2="153.9" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="165.9" x2="250.6" y2="165.9" stroke="#8a9096" stroke-opacity=".6"/><line x1="245.9" y1="177.8" x2="250.6" y2="177.8" stroke="#8a9096" stroke-opacity=".6"/><rect x="296.4" y="75.9" width="7.3" height="108.2" rx="3" fill="#000"/><line x1="287.5" y1="82.2" x2="292.2" y2="82.2" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="94.1" x2="292.2" y2="94.1" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="106.1" x2="292.2" y2="106.1" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="118.0" x2="292.2" y2="118.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="130.0" x2="292.2" y2="130.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="142.0" x2="292.2" y2="142.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="153.9" x2="292.2" y2="153.9" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="165.9" x2="292.2" y2="165.9" stroke="#8a9096" stroke-opacity=".6"/><line x1="287.5" y1="177.8" x2="292.2" y2="177.8" stroke="#8a9096" stroke-opacity=".6"/><rect x="338.0" y="75.9" width="7.3" height="108.2" rx="3" fill="#000"/><line x1="329.1" y1="82.2" x2="333.8" y2="82.2" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="94.1" x2="333.8" y2="94.1" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="106.1" x2="333.8" y2="106.1" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="118.0" x2="333.8" y2="118.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="130.0" x2="333.8" y2="130.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="142.0" x2="333.8" y2="142.0" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="153.9" x2="333.8" y2="153.9" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="165.9" x2="333.8" y2="165.9" stroke="#8a9096" stroke-opacity=".6"/><line x1="329.1" y1="177.8" x2="333.8" y2="177.8" stroke="#8a9096" stroke-opacity=".6"/>
+  <polyline class="c-onda" pathLength="1" points="216.8,130.0 218.6,129.9 220.5,129.6 222.3,129.6 224.2,129.6 226.0,129.5 227.9,129.0 229.7,127.8 231.6,126.4 233.4,125.4 235.3,125.4 237.1,126.8 239.0,129.4 240.8,132.5 242.7,135.1 244.5,136.4 246.4,136.1 248.2,134.7 250.1,133.1 251.9,132.2 253.8,132.5 255.6,134.0 257.5,135.5 259.3,135.6 261.2,133.3 263.0,128.2 264.9,121.3 266.7,114.8 268.6,110.8 270.4,111.0 272.3,115.6 274.1,122.7 276.0,129.8 277.8,134.3 279.7,135.2 281.5,133.4 283.4,131.5 285.2,132.4 287.1,137.7 288.9,146.4 290.8,155.5 292.6,160.9 294.5,159.3 296.3,150.2 298.2,136.1 300.0,121.3 301.8,110.6 303.7,106.5 305.5,108.8 307.4,114.6 309.2,120.1 311.1,122.3 312.9,120.6 314.8,116.8 316.6,114.0 318.5,115.1 320.3,121.2 322.2,130.8 324.0,141.0 325.9,148.4 327.7,151.1 329.6,148.7 331.4,143.0 333.3,136.5 335.1,131.4 337.0,129.1 338.8,129.1 340.7,130.2 342.5,130.8 344.4,130.1 346.2,127.8 348.1,124.8 349.9,122.2 351.8,121.1 353.6,122.0 355.5,124.6 357.3,128.0 359.2,131.1 361.0,133.1 362.9,133.6 364.7,133.1 366.6,132.1 368.4,131.3 370.3,131.1 372.1,131.3 374.0,131.6 375.8,131.6 377.7,131.1 379.5,130.5 381.4,130.0 383.2,130.0" fill="none" stroke="url(#cp-onda)" stroke-width="3.6" stroke-linejoin="round" filter="url(#cp-brilho)"/>
+  <g class="c-cap"><rect x="243.8" y="146.1" width="32.2" height="18.7" rx="3" fill="#000" fill-opacity=".55"/><rect x="242.8" y="142.0" width="31.2" height="17.7" rx="2" fill="url(#cp-cap)"/><line x1="242.8" y1="150.8" x2="274.0" y2="150.8" stroke="#15181b" stroke-width="2"/></g><g class="c-cap"><rect x="285.4" y="94.1" width="32.2" height="18.7" rx="3" fill="#000" fill-opacity=".55"/><rect x="284.4" y="90.0" width="31.2" height="17.7" rx="2" fill="url(#cp-cap)"/><line x1="284.4" y1="98.8" x2="315.6" y2="98.8" stroke="#15181b" stroke-width="2"/></g><g class="c-cap"><rect x="327.0" y="129.5" width="32.2" height="18.7" rx="3" fill="#000" fill-opacity=".55"/><rect x="326.0" y="125.3" width="31.2" height="17.7" rx="2" fill="url(#cp-cap)"/><line x1="326.0" y1="134.2" x2="357.2" y2="134.2" stroke="#15181b" stroke-width="2"/></g>
+  </g><g class="c-nome"><text x="300" y="318" text-anchor="middle" font-family="Arial Black, Arial, Helvetica, sans-serif" font-weight="900" font-size="64" fill="url(#cp-metal)" stroke="#2ec4b6" stroke-opacity=".25" stroke-width="1">MIK SEIFADOR</text><rect class="c-varre" x="-120" y="250" width="90" height="80" fill="url(#cp-varre)" clip-path="url(#cp-clipnome)"/></g>
+  <g class="c-sub"><text x="255" y="356" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="14" letter-spacing="4" fill="#9aa3a8">MULTITRACK AO VIVO</text>
+  <rect x="398" y="340" width="56" height="24" rx="7" fill="#38f98c"/>
+  <text x="426" y="358" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="17" fill="#06281a">v1.8</text></g>
+  </svg>
+  <div class="capa-barra"><i></i></div>
+  <div class="capa-txt">Conectando ao REAPER…</div>
+</div>
+<div id="app">
+
+  <header id="topo-compacto">
+    <div class="cp-mus">
+      <button type="button" class="b3d ic" data-cmd="mprev" title="Música anterior" aria-label="Música anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2.4v14H6zM20 5v14L9.5 12z"/></svg></button>
+      <div class="cp-titulos">
+        <b id="cp-musica">Nenhuma música</b>
+        <small id="cp-secao">—</small>
+      </div>
+      <button type="button" class="b3d ic" data-cmd="mnext" title="Próxima música" aria-label="Próxima música"><svg viewBox="0 0 24 24"><path d="M15.6 5H18v14h-2.4zM4 5l10.5 7L4 19z"/></svg></button>
+    </div>
+    <div class="cp-meta">
+      <span class="cp-dado"><small>TEMPO</small><b id="cp-tempo">0:00 / 0:00</b></span>
+      <span class="cp-dado"><small>BPM</small><b id="cp-bpm">--</b></span>
+      <button type="button" class="cp-dado cp-tom" id="cp-bt-tom"><small>TOM</small><b id="cp-tom">--</b></button>
+      <span class="cp-status"><i id="cp-dot"></i><span id="cp-txt">Conectando ao REAPER…</span></span>
+    </div>
+  </header>
+  <header id="topo">
+    <div class="grupo transporte">
+      <button class="b3d ic" data-cmd="mprev" title="Música anterior"><svg viewBox="0 0 24 24"><path d="M6 5h2.4v14H6zM20 5v14L9.5 12z"/></svg></button>
+      <button id="bt-play" class="play3d" data-cmd="play" title="Play / Pause"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6.5 5h4v14h-4zM13.5 5h4v14h-4z"/></svg></button>
+      <button class="b3d ic" data-cmd="mnext" title="Próxima música"><svg viewBox="0 0 24 24"><path d="M15.6 5H18v14h-2.4zM4 5l10.5 7L4 19z"/></svg></button>
+      <button class="b3d ic" data-cmd="stop" title="Stop"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg></button>
+    </div>
+    <div class="grupo secnav">
+      <button class="b3d rot" data-cmd="sprev"><svg viewBox="0 0 24 24"><path d="M11 6v12L3 12zM20 6v12l-8-6z"/></svg><span>SEÇÃO</span></button>
+      <button class="b3d rot" data-cmd="snext"><svg viewBox="0 0 24 24"><path d="M13 6v12l8-6zM4 6v12l8-6z"/></svg><span>SEÇÃO</span></button>
+    </div>
+    <div class="grupo flags">
+      <button class="b3d rot" data-cmd="auto" data-flag="AUTO"><svg viewBox="0 0 24 24"><path d="M12 4l7 16h-3l-1.6-4H9.6L8 20H5zm-1.3 9h2.6L12 9.6z"/></svg><span>AUTO</span></button>
+      <button class="b3d rot" data-cmd="hold" data-flag="HOLD"><svg viewBox="0 0 24 24"><path d="M7 5h3v14H7zM14 5h3v14h-3z"/></svg><span>HOLD</span></button>
+      <button class="b3d rot" data-cmd="loop" data-flag="LOOP"><svg viewBox="0 0 24 24"><path d="M17 7h-9a5 5 0 0 0 0 10h1v-2.4H8a2.6 2.6 0 0 1 0-5.2h9V12l4-3.6L17 5zM16 14.6v2.4h-1v-2.4z"/><path d="M15 14.6h1a2.6 2.6 0 0 0 2.4-1.6l2.2 1A5 5 0 0 1 16 17h-1z"/></svg><span>LOOP</span></button>
+    </div>
+    <div id="lcd" class="lcd">
+      <div class="lcd-cols">
+        <div><b id="lcd-tempo">0:00 / 0:00</b><small>TEMPO</small></div>
+        <div><b id="lcd-bpm">--</b><small>BPM</small></div>
+        <div><b id="lcd-tom">--</b><small>TOM</small></div>
+      </div>
+      <div class="lcd-status"><i id="lcd-dot"></i><span id="lcd-txt">Conectando ao REAPER…</span></div>
+    </div>
+    <div class="grupo modos">
+      <button class="b3d rot" data-cmd="lr" data-modo="LR"><svg viewBox="0 0 24 24"><circle cx="7" cy="12" r="4.5"/><circle cx="17" cy="12" r="4.5"/></svg><span>L/R</span></button>
+      <button class="b3d rot" data-cmd="aovivo" data-modo="AO_VIVO"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 0 1 4 4v4a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4zM5 11h2a5 5 0 0 0 10 0h2a7 7 0 0 1-6 6.9V21h-2v-3.1A7 7 0 0 1 5 11z"/></svg><span>Ao Vivo</span></button>
+      <button class="b3d rot" data-cmd="studio" data-modo="STUDIO"><svg viewBox="0 0 24 24"><path d="M12 3a8 8 0 0 0-8 8v6a3 3 0 0 0 3 3h2v-8H6v-1a6 6 0 0 1 12 0v1h-3v8h2a3 3 0 0 0 3-3v-6a8 8 0 0 0-8-8z"/></svg><span>Studio</span></button>
+      <button class="b3d rot tom" id="bt-tom"><b id="tom-val">--</b><span id="tom-rot">Tom</span></button>
+      <button class="b3d rot" id="bt-menu"><svg viewBox="0 0 24 24"><path d="M4 6h16v2.4H4zM4 10.8h16v2.4H4zM4 15.6h16V18H4z"/></svg><span>Menu</span></button>
+    </div>
+  </header>
+
+  <div id="prog" hidden>
+    <div class="prog-barra"><i id="prog-fill"></i></div>
+    <div class="prog-txt"><span id="prog-linha"></span><span id="prog-sub"></span><button id="prog-cancelar" class="lnk" hidden>Cancelar</button></div>
+  </div>
+
+
+  <div id="chips-compacto">
+    <div class="cp-flags">
+      <button type="button" class="chip" data-cmd="auto" data-flag="AUTO">AUTO</button>
+      <button type="button" class="chip" data-cmd="hold" data-flag="HOLD">HOLD</button>
+      <button type="button" class="chip" data-cmd="loop" data-flag="LOOP">LOOP</button>
+      <button type="button" class="chip liga-pad" data-cmd="pad" data-flag="PAD" id="bt-pad-cp">PAD</button>
+    </div>
+    <div class="cp-acoes">
+      <button type="button" class="chip" id="bt-setlist-cp">Setlist</button>
+      <button type="button" class="chip" id="bt-menu-cp">Menu</button>
+      <button type="button" class="chip" id="bt-ver-completo">Ver completo</button>
+    </div>
+  </div>
+
+  <div id="seek-fino" role="slider" aria-label="Posição da música" aria-valuemin="0" aria-valuemax="100">
+    <div id="seek-marcas"></div>
+    <div id="seek-trilha"><i id="seek-fill"></i><b id="seek-cursor"></b></div>
+  </div>
+
+  <section id="setlist" class="faixa"></section>
+  <div id="setlist-ph" hidden></div>
+
+  <section id="onda-box">
+    <canvas id="onda"></canvas>
+  </section>
+
+  <div id="palco">
+  <section id="secoes"></section>
+
+  <section id="info">
+    <div class="caixa bpm"><small>BPM</small><b id="bpm-val">--</b>
+      <button class="chip mini" data-cmd="bpm" data-arg="-1">−</button><button class="chip mini" data-cmd="bpm" data-arg="1">+</button><button class="chip mini" data-cmd="bpmr">R</button></div>
+    <div class="caixa sig"><b id="sig-val">4/4</b></div>
+    <button class="chip" data-cmd="soloclick" data-flag="SOLO_CLICK">Solo Click</button>
+    <button class="chip" data-cmd="loopclick" data-flag="REPETIR_CLICK">Loop Click</button>
+    <button class="chip" data-cmd="pad" data-flag="PAD" id="bt-pad">PAD</button>
+    <button class="chip" data-cmd="suave" data-flag="suave">Salto suave</button>
+    <span id="saida-txt" class="status-txt"></span>
+    <button type="button" id="bt-ver-compacto" class="chip">Ver compacto</button>
+  </section>
+
+  <section id="mixer">
+    <div class="mix-titulos"><span>STEMS — BANDA</span><span>FONE / SAÍDA</span></div>
+    <div id="mix-scroll"><div id="mix-stems"></div><div id="mix-direita"><div id="mix-dir"></div><div id="mix-master"></div></div></div>
+  </section>
+  <div id="mixer-ph" hidden></div>
+  </div>
+
+  <nav id="barra-compacta" aria-label="Transporte ao vivo">
+    <button type="button" class="b3d rot" data-cmd="sprev" aria-label="Seção anterior"><svg viewBox="0 0 24 24"><path d="M11 6v12L3 12zM20 6v12l-8-6z"/></svg><span>SEÇÃO</span></button>
+    <button type="button" id="bt-play-cp" class="play3d" data-cmd="play" title="Play / Pause" aria-label="Play ou pause"><svg class="i-play" viewBox="0 0 24 24"><path d="M8 5l12 7-12 7z"/></svg><svg class="i-pause" viewBox="0 0 24 24"><path d="M6.5 5h4v14h-4zM13.5 5h4v14h-4z"/></svg></button>
+    <button type="button" class="b3d ic" data-cmd="stop" title="Stop" aria-label="Parar"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg></button>
+    <button type="button" class="b3d rot" data-cmd="snext" aria-label="Próxima seção"><svg viewBox="0 0 24 24"><path d="M13 6v12l8-6zM4 6v12l8-6z"/></svg><span>SEÇÃO</span></button>
+  </nav>
+  <footer id="rodape">Mik Seifador <span id="versao">1.9c</span> · Remoto · Criado por Miqueias Felix</footer>
+</div>
+
+<div id="conexao" hidden><div><b id="con-tit">Sem conexão com o REAPER</b><p id="con-txt"></p></div></div>
+<div id="toast"></div>
+<div id="veu" hidden></div>
+
+<div id="sheet-extra" hidden>
+  <div class="alca"></div>
+  <div class="sheet-cab">
+    <h3 id="sheet-tit">Setlist</h3>
+    <button type="button" id="sheet-fechar">Fechar</button>
+  </div>
+  <div id="sheet-corpo"></div>
+</div>
+<div id="folha" hidden></div>
+
+<script src="mikseifador/app.js?v=1.9c"></script>
+</body>
+</html>

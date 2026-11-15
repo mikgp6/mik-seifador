@@ -1,0 +1,274 @@
+{
+ "versao": "1.8",
+ "build": 1,
+ "data": "2026-11-15T13:11:28-03:00",
+ "ref": "main",
+ "arquivos": [
+  {
+   "caminho": "KeyMaps/MultitrackAoVivo.ReaperKeyMap",
+   "sha256": "5cf004603a81a3d1829bfb4d6898dc44f75c6cbd40e61690ffa193f930ad2233",
+   "tamanho": 4177
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/colorir_secoes.lua",
+   "sha256": "03ada003ce1fd48174e9ed6275a89adcbeb2ac57162260f7309d0d4ace8699d6",
+   "tamanho": 339
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/corrigir_bpm.lua",
+   "sha256": "4029361a70abb654971378cded6227178995a8d8e6450af10e92d11cf464127c",
+   "tamanho": 405
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/definir_tom.lua",
+   "sha256": "abd7dcf660fef5dadd825681f7c3351f348f00e10ce090a66ce4dac53b09497f",
+   "tamanho": 342
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/gerar_click_guia_cifra.lua",
+   "sha256": "a408148870d2df39936f6b554434afeb3a2f317a9d48147c48cb66e0d8a2cb1c",
+   "tamanho": 570
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/importar_multitrack.lua",
+   "sha256": "8c0105e6f03f441c01f10688608b8c8fb286ac73f04d038ba9faa1c6cdeaf90b",
+   "tamanho": 1003
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/instalar_motor_separacao.lua",
+   "sha256": "f049422f02e0125ca1a47634deeef6fd7a91be5de99f0667db6ba9023b7f8bcc",
+   "tamanho": 667
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/marcar_secao.lua",
+   "sha256": "a905dbfddb07e7daf01a29f51e172ea3b9d9686a9799870156fad9758d1b5022",
+   "tamanho": 334
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/modo_ao_vivo.lua",
+   "sha256": "aa687ffdbd24bfb373ced23812c5987c58121dd88996ac6088df702be1c39f2b",
+   "tamanho": 538
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/modo_lr.lua",
+   "sha256": "62dea2dee7c0319337398e0ff3b241f114640b2b6f1af8fbad7f9404d412c8a5",
+   "tamanho": 431
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/modo_lr_com_click.lua",
+   "sha256": "2fbe131cd8620a1bedc2ac2bfe8b8cfe89c0a19fb0536e6fb866e4316bbfb5b5",
+   "tamanho": 499
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/motor_ao_vivo.lua",
+   "sha256": "bf3b2d3cc364ae16316c1d89b04d65fd00bc38ca65b32636907fb3218807bfd1",
+   "tamanho": 1834
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/mt_analise.lua",
+   "sha256": "b9a6b761b1aeedcc7b9eec0be9ec32a8afe9d16354535db23d319583401e2e23",
+   "tamanho": 49198
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/mt_atualizar.lua",
+   "sha256": "b8bacbf7c9b67c4e406988d2b72aeea0ffda327aa76a1a1af2fef298fe47ab95",
+   "tamanho": 23764
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/mt_lib.lua",
+   "sha256": "4de311974333b1141072c7c079807569128d6e22a229db61c0d063961fd2b6d1",
+   "tamanho": 347176
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/mt_qr.lua",
+   "sha256": "d7f39d7cb7a51a5c45955e055e00e4a4649ce154921eb0705591dbe33c3df77a",
+   "tamanho": 8847
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/mt_remoto.lua",
+   "sha256": "419d205774eefdd11022d5f80d90cda4bb7e901d38be1f5948023211ce0d2112",
+   "tamanho": 38263
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/musica_anterior.lua",
+   "sha256": "552c98ff57e2b8c31dcd9da8226084c6c1a7b74324b2e5abc10eb4593224126b",
+   "tamanho": 438
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/painel_ao_vivo.lua",
+   "sha256": "6e6dd3abd067a56c85450bdb6b92671a9fdf60a94faefdfdc1a40e8947121024",
+   "tamanho": 180782
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/parar.lua",
+   "sha256": "c102db0b7680a01a6f7cd40dbd550a1eb3f21867a37c72b43b706015dc2bc361",
+   "tamanho": 398
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/play_pause.lua",
+   "sha256": "f0ff47318c4aa6900c8f3b40212a186fe34c7d46352121903974006680415bb4",
+   "tamanho": 361
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/preparar_projeto.lua",
+   "sha256": "b1526e3e1eb03fcec59bbc6b520bbf423622fc7a90739fd28054f9a8f44ba165",
+   "tamanho": 522
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/proxima_musica.lua",
+   "sha256": "abfe0d6267fbc3d69f091878fa40b3fb33a533f0686e872921e480a85ea82677",
+   "tamanho": 434
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/proxima_secao.lua",
+   "sha256": "870d7fdbb96361eb116647d274056b1cc437b1c9a5aee34bc362b00f1b9179d7",
+   "tamanho": 475
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/renomear_secao.lua",
+   "sha256": "6be7308d22f23a91e6993c97d3e875d3e4396beaef73094fdbf2b2b9fead2cf8",
+   "tamanho": 452
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/repetir_click.lua",
+   "sha256": "c53cad4aba361a3d29ed482cc1a9481f69d133f1e2278572393777c83bb064b2",
+   "tamanho": 475
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/salvar_marcadores.lua",
+   "sha256": "a2fdbacde45f334591ad2ba102e22750eb03436ac1e3369c6ea2962ba486ab62",
+   "tamanho": 416
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/secao_anterior.lua",
+   "sha256": "6d565106d1298478b3f5732279c923bbae075e533c9d4b2e1f55d36dbe3227ca",
+   "tamanho": 414
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separar_trilhas.lua",
+   "sha256": "81df2d03024b4efacc979b43fcd3e1bab323b22eb91d6342fd349e5f01823cf9",
+   "tamanho": 659
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/solo_click.lua",
+   "sha256": "3059244878bbfaa9953440034e59e4c07eb169eddd442eb444c1277e881ddc01",
+   "tamanho": 453
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/toggle_auto.lua",
+   "sha256": "bf8530f30c04a90c49bc82a06cda5f1dafc3a3511ea23dec6f31ed0ef40ab6b4",
+   "tamanho": 451
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/toggle_hold.lua",
+   "sha256": "da25567f4f3c3e90d98e2020e5003deed3c3748de0a65f0774948c2006ec48c9",
+   "tamanho": 476
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/toggle_loop_secao.lua",
+   "sha256": "e607fbe64cf8c43944e53cb106bc26591d4746e77fb3f25fa7e2bc752156795f",
+   "tamanho": 453
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/toggle_pad.lua",
+   "sha256": "1a66611b218e71ebab084760790a7ac4b64c2e00a95e16b92a3cf173f4176c82",
+   "tamanho": 435
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/toggle_salto_suave.lua",
+   "sha256": "5b93a309b1a09a7e044ca30474bc57b2808912783542e26bf8d2896afc464c90",
+   "tamanho": 489
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/tom_mais.lua",
+   "sha256": "9b23c80c1e61cc856477d5db36f3745ae538c3df6219f95c00de33980d65d169",
+   "tamanho": 403
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/tom_menos.lua",
+   "sha256": "7114352418ed2017a4b95a6310ac232a4dc238b32fe54f5dfd02a6d117c37b31",
+   "tamanho": 406
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/tom_zerar.lua",
+   "sha256": "76429d38df99e064a818514b1b27f2c874555944d44d6bdfb9ae5bcfa8a71dc6",
+   "tamanho": 374
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/voltar_musica_original.lua",
+   "sha256": "7e60738c3643b1a53e8d87711de1e38f155ab5eee236a1789379ed136db9ecdd",
+   "tamanho": 501
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador.html",
+   "sha256": "8da5fcd9563565e1065f3ad6a28c1e4465a5f0a9ddcf325e3feb81f245a33364",
+   "tamanho": 17228
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador/app.css",
+   "sha256": "b3a6ed4a3f4bb4962d007e56eec790e35e0fca114a0a787a38258c35540c5137",
+   "tamanho": 33153
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador/app.js",
+   "sha256": "723a24a1698a8bc2bdd2c895fa927f8b518830fa7c504a0d3faa8440446194d1",
+   "tamanho": 56409
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador/icone-180.png",
+   "sha256": "2238846c096803c94cb94e331216beef660904ee0e95dcd484fd8878b3a251ff",
+   "tamanho": 8155
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador/icone-192.png",
+   "sha256": "84f0dcc39671ede72cc8aef97578c737c7d1d25ceb4bcd3b7a4e8f6dfe4bd380",
+   "tamanho": 12383
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador/icone-512.png",
+   "sha256": "273fbfa1e12de3c59668395140962c85a9a5199b70f8b65b7ca8e33102b5f68b",
+   "tamanho": 36388
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/remoto_web/mikseifador/manifest.json",
+   "sha256": "5383a3ba2d29b778b70a8d807d9ab94223a905f91c1c90d6028c14b9e87b9558",
+   "tamanho": 621
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/buscar_capa.py",
+   "sha256": "ece5a487ea41456e3e92f230a2a22406e40b4cace0c18fb04d82dc6dc397447e",
+   "tamanho": 16469
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/instalar_motor.ps1",
+   "sha256": "ff7102ada942b18b5811d8f439d2d0d20c1bdae8e49c744f1642259d04fd9a31",
+   "tamanho": 5070
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/instalar_motor.sh",
+   "sha256": "81ca9eea50f3844965e8f2ca5f1e1a659ba1531b367c62b6ba51b71905d9c95a",
+   "tamanho": 4467
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/requisitos_mac_arm.txt",
+   "sha256": "05514dc648c585062936f869bd5aabe09170bdb7fe8e92f53e1ca869af69aa83",
+   "tamanho": 455
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/requisitos_mac_intel.txt",
+   "sha256": "05514dc648c585062936f869bd5aabe09170bdb7fe8e92f53e1ca869af69aa83",
+   "tamanho": 455
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/requisitos_windows.txt",
+   "sha256": "3fde72c63b8e03c2080483820386ed3f6c80b05af4153f08bd4afec74def75ff",
+   "tamanho": 471
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/separador/separar.py",
+   "sha256": "1a33d4bcb35c5d20115a4e90df2abb09c4740a8ae7091d9951d5087837328874",
+   "tamanho": 29624
+  }
+ ],
+ "notas": "Primeira build com atualização automática (botão Salvar Ctrl+S, atalho Ctrl+Shift+E, faders da música atual, separação sem janelas, click pela fórmula)."
+}
