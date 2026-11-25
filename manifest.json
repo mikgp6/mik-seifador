@@ -1,13 +1,13 @@
 {
  "versao": "1.8",
  "build": 2,
- "data": "2026-11-25T00:36:20-03:00",
- "ref": "92701866e2e347c84eeee555cdd21b0bd56fa7c3",
+ "data": "2026-11-25T00:54:02-03:00",
+ "ref": "b59caf402d1a1e32f53e6c7ef87ef94436ba5b2b",
  "arquivos": [
   {
    "caminho": "KeyMaps/MultitrackAoVivo.ReaperKeyMap",
-   "sha256": "5cf004603a81a3d1829bfb4d6898dc44f75c6cbd40e61690ffa193f930ad2233",
-   "tamanho": 4177
+   "sha256": "b44bb7be8b963a3a544633fc6d3983b7010889e59e5c0e1fd7df4f1eaa2d21a6",
+   "tamanho": 4271
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/colorir_secoes.lua",
@@ -23,6 +23,11 @@
    "caminho": "Scripts/MultitrackAoVivo/definir_tom.lua",
    "sha256": "abd7dcf660fef5dadd825681f7c3351f348f00e10ce090a66ce4dac53b09497f",
    "tamanho": 342
+  },
+  {
+   "caminho": "Scripts/MultitrackAoVivo/exportar_trilhas.lua",
+   "sha256": "5f3e41a67e78dfb67a4289e9c0f1559b06192f8e92501320b40ec0ab89348037",
+   "tamanho": 583
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/gerar_click_guia_cifra.lua",
@@ -76,8 +81,8 @@
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/mt_lib.lua",
-   "sha256": "4de311974333b1141072c7c079807569128d6e22a229db61c0d063961fd2b6d1",
-   "tamanho": 347176
+   "sha256": "b32dfd769b37d6f87d6105acc6bcd9ec42d0f58bbd7f1f218b7e1a22dcbd5324",
+   "tamanho": 371369
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/mt_qr.lua",
@@ -96,8 +101,8 @@
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/painel_ao_vivo.lua",
-   "sha256": "07fed0b1dde166e913491e2cb259d4af515696185ecccfefa250f85b8fd4da6e",
-   "tamanho": 187296
+   "sha256": "c37ec5f7f19b81581108e5652ea9b78a00d61e1969de0606daa718b56d1c5239",
+   "tamanho": 188046
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/parar.lua",
@@ -270,5 +275,5 @@
    "tamanho": 29930
   }
  ],
- "notas": "Janela do painel abre em tamanho padrão que cabe na tela (também no Mac) e não reabre minimizada. No Mac Intel, o motor de separação segue com Demucs na CPU quando o audio-separator não tem wheel de PyTorch 2.3+."
+ "notas": "Exportar trilhas (Menu ou Ctrl+Shift+X / Cmd+Shift+X): pasta Exportar com as 6 trilhas (as que existirem), click e guia em WAV do mesmo comprimento, LEIA-ME (BPM, compasso, seções) e MIDI de tempo/marcadores, para qualquer DAW. A janela do painel abre em tamanho padrão que cabe na tela (também no Mac) e não reabre minimizada. No Mac Intel, o motor de separação segue com Demucs na CPU quando o audio-separator não tem wheel de PyTorch 2.3+."
 }
