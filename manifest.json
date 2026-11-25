@@ -1,8 +1,8 @@
 {
  "versao": "1.8",
- "build": 2,
- "data": "2026-11-25T00:54:02-03:00",
- "ref": "b59caf402d1a1e32f53e6c7ef87ef94436ba5b2b",
+ "build": 3,
+ "data": "2026-11-25T01:05:58-03:00",
+ "ref": "0e74a3c3481e9cc78893a0b4e557d17ea3cf61b6",
  "arquivos": [
   {
    "caminho": "KeyMaps/MultitrackAoVivo.ReaperKeyMap",
@@ -80,9 +80,14 @@
    "tamanho": 23764
   },
   {
+   "caminho": "Scripts/MultitrackAoVivo/mt_exportar.lua",
+   "sha256": "976c62cb1a10a78daf182b7b194cef59d26d33399311f62745db9587a1b046e9",
+   "tamanho": 24274
+  },
+  {
    "caminho": "Scripts/MultitrackAoVivo/mt_lib.lua",
-   "sha256": "b32dfd769b37d6f87d6105acc6bcd9ec42d0f58bbd7f1f218b7e1a22dcbd5324",
-   "tamanho": 371369
+   "sha256": "776b6f0895fe878fd06f55be2248628a2581978178a822c8fc2af10850eb22e6",
+   "tamanho": 348779
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/mt_qr.lua",
@@ -275,5 +280,5 @@
    "tamanho": 29930
   }
  ],
- "notas": "Exportar trilhas (Menu ou Ctrl+Shift+X / Cmd+Shift+X): pasta Exportar com as 6 trilhas (as que existirem), click e guia em WAV do mesmo comprimento, LEIA-ME (BPM, compasso, seções) e MIDI de tempo/marcadores, para qualquer DAW. A janela do painel abre em tamanho padrão que cabe na tela (também no Mac) e não reabre minimizada. No Mac Intel, o motor de separação segue com Demucs na CPU quando o audio-separator não tem wheel de PyTorch 2.3+."
+ "notas": "Corrige a atualização no REAPER: o mt_lib.lua da build 2 passava do limite de 200 variáveis locais do Lua e o atualizador recusava o arquivo (“script com erro”), sem trocar nada. A exportação de trilhas foi para um módulo à parte. Exportar trilhas (Menu ou Ctrl+Shift+X / Cmd+Shift+X): pasta Exportar com as 6 trilhas (as que existirem), click e guia em WAV do mesmo comprimento, LEIA-ME (BPM, compasso, seções) e MIDI de tempo/marcadores, para qualquer DAW. A janela do painel abre em tamanho padrão que cabe na tela (também no Mac) e não reabre minimizada. No Mac Intel, o motor de separação segue com Demucs na CPU quando o audio-separator não tem wheel de PyTorch 2.3+."
 }
