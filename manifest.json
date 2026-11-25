@@ -1,8 +1,8 @@
 {
  "versao": "1.8",
- "build": 1,
- "data": "2026-11-15T13:11:28-03:00",
- "ref": "main",
+ "build": 2,
+ "data": "2026-11-25T00:36:20-03:00",
+ "ref": "92701866e2e347c84eeee555cdd21b0bd56fa7c3",
  "arquivos": [
   {
    "caminho": "KeyMaps/MultitrackAoVivo.ReaperKeyMap",
@@ -96,8 +96,8 @@
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/painel_ao_vivo.lua",
-   "sha256": "6e6dd3abd067a56c85450bdb6b92671a9fdf60a94faefdfdc1a40e8947121024",
-   "tamanho": 180782
+   "sha256": "07fed0b1dde166e913491e2cb259d4af515696185ecccfefa250f85b8fd4da6e",
+   "tamanho": 187296
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/parar.lua",
@@ -246,8 +246,8 @@
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/separador/instalar_motor.sh",
-   "sha256": "81ca9eea50f3844965e8f2ca5f1e1a659ba1531b367c62b6ba51b71905d9c95a",
-   "tamanho": 4467
+   "sha256": "73fafcf8d899bbcfdc3842391d87b468361395cf3c712dc90009a9ed7f765ff8",
+   "tamanho": 5315
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/separador/requisitos_mac_arm.txt",
@@ -266,9 +266,9 @@
   },
   {
    "caminho": "Scripts/MultitrackAoVivo/separador/separar.py",
-   "sha256": "1a33d4bcb35c5d20115a4e90df2abb09c4740a8ae7091d9951d5087837328874",
-   "tamanho": 29624
+   "sha256": "4f0e91b5778a817e6e2d47d35789138bbd17b05cc62520655dca34c7c29881bc",
+   "tamanho": 29930
   }
  ],
- "notas": "Primeira build com atualização automática (botão Salvar Ctrl+S, atalho Ctrl+Shift+E, faders da música atual, separação sem janelas, click pela fórmula)."
+ "notas": "Janela do painel abre em tamanho padrão que cabe na tela (também no Mac) e não reabre minimizada. No Mac Intel, o motor de separação segue com Demucs na CPU quando o audio-separator não tem wheel de PyTorch 2.3+."
 }
