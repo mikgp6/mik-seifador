@@ -29,6 +29,7 @@ SCR 4 0 MT_RENOMEAR_SECAO "Custom: MT - Renomear seção atual" "MultitrackAoViv
 SCR 4 0 MT_GERAR_CLICK_GUIA "Custom: MT - Gerar click + guia + seções + cifra (música atual)" "MultitrackAoVivo\gerar_click_guia_cifra.lua"
 SCR 4 0 MT_CORRIGIR_BPM "Custom: MT - Corrigir BPM / compasso da música atual" "MultitrackAoVivo\corrigir_bpm.lua"
 SCR 4 0 MT_SEPARAR_TRILHAS "Custom: MT - Separar trilhas (bateria, baixo, voz) da música atual" "MultitrackAoVivo\separar_trilhas.lua"
+SCR 4 0 MT_EXPORTAR_TRILHAS "Custom: MT - Exportar trilhas (para qualquer DAW)" "MultitrackAoVivo\exportar_trilhas.lua"
 SCR 4 0 MT_VOLTAR_ORIGINAL "Custom: MT - Voltar para a música original (tirar trilhas separadas)" "MultitrackAoVivo\voltar_musica_original.lua"
 SCR 4 0 MT_INSTALAR_MOTOR "Custom: MT - Instalar motor de separação de trilhas" "MultitrackAoVivo\instalar_motor_separacao.lua"
 KEY 1 120 _MT_PAINEL 0
@@ -57,3 +58,4 @@ KEY 13 73 _MT_IMPORTAR 0
 KEY 1 77 _MT_MARCAR_SECAO 0
 KEY 25 83 _MT_SALVAR_MARCADORES 0
 KEY 13 69 _MT_SEPARAR_TRILHAS 0
+KEY 13 88 _MT_EXPORTAR_TRILHAS 0

@@ -1897,6 +1897,14 @@ local function desenhar_topo(e, x0, y0, W)
         "Roda sem travar o REAPER; as trilhas entram na BANDA alinhadas.\n" ..
         (MT.motor_instalado() and "Motor de separação: instalado" or "Na 1ª vez instala o motor (~1 GB, 1 clique)."))
     end
+    if ImGui.MenuItem(ctx, "Exportar trilhas (para qualquer DAW)", MT.atalho("Ctrl+Shift+X")) then depois(MT.exportar_trilhas) end
+    if ImGui.IsItemHovered(ctx) then
+      ImGui.SetTooltip(ctx, "Gera uma pasta Exportar na pasta da música com as 6 trilhas\n" ..
+        "(Bateria, Baixo, Guitarra, Teclado, Voz, Outros — as que existirem),\n" ..
+        "o click e a guia em WAV (mesmo começo e mesmo comprimento),\n" ..
+        "um LEIA-ME (BPM, compasso, seções) e um MIDI de tempo/marcadores.\n" ..
+        "Abre a pasta no fim. Não altera e não salva o projeto.  [" .. MT.atalho("Ctrl+Shift+X") .. "]")
+    end
     if ImGui.MenuItem(ctx, "Voltar para a música original (tirar trilhas separadas)") then depois(MT.desfazer_separacao) end
     if ImGui.MenuItem(ctx, "Separar trilhas ao importar (música comum / VS)", nil, MT.separacao_auto()) then MT.alternar_separacao_auto() end
     if ImGui.MenuItem(ctx, "Manter a música original mutada depois de separar", nil, MT.mutar_original()) then MT.alternar_mutar_original() end
@@ -3009,7 +3017,7 @@ local function teclado()
     if ImGui.IsKeyPressed(ctx, ImGui.Key_L, false) then MT.alternar_loop() end
     if ImGui.IsKeyPressed(ctx, ImGui.Key_C, false) then MT.alternar_solo_click() end
     if ImGui.IsKeyPressed(ctx, ImGui.Key_P, false) then depois(MT.alternar_pad) end
-    do -- atalhos com modificador: Ctrl+S salva o projeto; Ctrl+Shift+E separa trilhas (mesma função do Menu)
+    do -- atalhos com modificador: Ctrl+S salva o projeto; Ctrl+Shift+E separa trilhas; Ctrl+Shift+X exporta trilhas
       local okm, mods = false, 0
       if tem_imgui("GetKeyMods") then okm, mods = pcall(ImGui.GetKeyMods, ctx) end
       if not okm or not mods then mods = 0 end
@@ -3018,6 +3026,7 @@ local function teclado()
       local alt = (mods & imgui_opcional("Mod_Alt", 0)) ~= 0
       if ctrl and not shift and not alt and ImGui.IsKeyPressed(ctx, ImGui.Key_S, false) then depois(salvar_projeto_painel) end
       if ctrl and shift and not alt and ImGui.IsKeyPressed(ctx, ImGui.Key_E, false) then depois(MT.separar_musica_atual) end
+      if ctrl and shift and not alt and ImGui.IsKeyPressed(ctx, ImGui.Key_X, false) then depois(MT.exportar_trilhas) end
     end
     if ImGui.IsKeyPressed(ctx, ImGui.Key_N, false) then depois(MT.renomear_secao) end
   end
