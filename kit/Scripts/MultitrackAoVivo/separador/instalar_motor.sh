@@ -57,8 +57,24 @@ if [ "$TEM_NVIDIA" = "1" ]; then
   passo 0.55 "Trocando o PyTorch pela versão com CUDA..."
   "$UV" pip install --python "$PY" torch==2.2.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu118 >> "$LOG" 2>&1 || falha "não consegui instalar o PyTorch com CUDA"
 fi
+# audio-separator 0.48 exige torch>=2.3 (no Mac Intel, torch>=2.13 no Apple Silicon).
+# O PyTorch parou de publicar wheels macOS x86_64 a partir do 2.3 (só há 2.2.2),
+# então neste Mac Intel o resolvedor falha. Tentamos o 0.48; se não houver wheel,
+# o motor segue só com Demucs na CPU (modo padrão). A qualidade máxima (BS-Roformer)
+# fica indisponível e o painel cai para htdemucs_6s.
 passo 0.68 "Instalando o audio-separator (modo qualidade máxima)..."
-"$UV" pip install --python "$PY" "audio-separator==0.48.0" >> "$LOG" 2>&1 || falha "não consegui instalar o audio-separator"
+AS_VER="0"
+if "$UV" pip install --python "$PY" "audio-separator==0.48.0" >> "$LOG" 2>&1; then
+  AS_VER="0.48.0"
+else
+  echo "AVISO: audio-separator==0.48.0 não instalou (provável falta de wheel de torch>=2.3 neste processador)." >> "$LOG"
+  if [ "$ARQ" = "x86_64" ]; then
+    passo 0.70 "Qualidade máxima indisponível neste Mac Intel (sem wheel do PyTorch 2.3+); seguindo com Demucs..."
+  else
+    # Em Apple Silicon / outros, ainda tentamos; se falhar, não derruba o motor.
+    passo 0.70 "Não deu para instalar o audio-separator; o motor segue com Demucs."
+  fi
+fi
 if [ "$TEM_NVIDIA" = "1" ]; then
   "$UV" pip install --python "$PY" torch==2.2.2 torchaudio==2.2.2 --index-url https://download.pytorch.org/whl/cu118 >> "$LOG" 2>&1 || falha "não consegui repor o PyTorch com CUDA"
 else
@@ -69,7 +85,7 @@ MIK_MOTOR="$BASE" "$PY" "$KIT/separar.py" --baixar-modelo >> "$LOG" 2>&1 || falh
 passo 0.95 "Limpando arquivos temporários..."
 "$UV" cache clean >> "$LOG" 2>&1
 if [ "$TEM_NVIDIA" = "1" ]; then TORCH=cuda; else TORCH=cpu; fi
-printf 'motor=1\nuv=%s\nmodelo=htdemucs_6s\ntorch=%s\naudio_separator=0.48.0\n' "$UV_VERSAO" "$TORCH" > "$BASE/versao.txt"
+printf 'motor=1\nuv=%s\nmodelo=htdemucs_6s\ntorch=%s\naudio_separator=%s\n' "$UV_VERSAO" "$TORCH" "$AS_VER" > "$BASE/versao.txt"
 echo "OK" > "$STATUS"
 echo "  Motor de separação instalado!"
 exit 0

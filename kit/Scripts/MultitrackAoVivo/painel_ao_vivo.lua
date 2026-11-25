@@ -3143,6 +3143,9 @@ local function js_show(hwnd, estado)
 end
 
 -- JS_Window_GetRect devolve (ok, l, t, r, b); pcall acrescenta mais um boolean.
+-- No macOS o eixo Y é o da Cocoa (origem embaixo): top > bottom. Largura e
+-- altura usam o valor absoluto; a conversão do Y para o ImGui (origem em cima)
+-- fica a cargo de quem conhece a altura da tela.
 local function js_rect(hwnd)
   if not hwnd or not r.JS_Window_GetRect then return end
   local pok, a, b, c, d, e = pcall(r.JS_Window_GetRect, hwnd)
@@ -3155,76 +3158,181 @@ local function js_rect(hwnd)
     l, t, rgt, bt = a, b, c, d
   end
   if type(l) ~= "number" then return end
-  return l, t or 0, rgt or l, bt or t or 0
+  t, rgt, bt = t or 0, rgt or l, bt or t or 0
+  local cocoa = MT.EH_MAC and t > bt
+  return l, t, rgt, bt, cocoa
 end
 
--- Área ÚTIL do MONITOR (sem a barra de tarefas), não a viewport da
--- própria janela do painel. No ReaImGui, GetWindowViewport/GetMainViewport
--- costumam devolver o tamanho da janela flutuante — maximizar virava no-op.
+local function js_rect_tamanho(l, t, rgt, bt, cocoa)
+  local w = math.abs((rgt or l) - l)
+  local h = cocoa and math.abs((t or 0) - (bt or 0)) or ((bt or t or 0) - (t or 0))
+  return w, h
+end
+
+-- Área ÚTIL do MONITOR (sem menu / dock / barra de tarefas), em pontos do
+-- ImGui (já vale para Retina/HiDPI). Não usa a viewport da própria janela.
+local mon_cache = { t = -1 }
 local function area_monitor()
+  local agora = r.time_precise and r.time_precise() or 0
+  if mon_cache.w and agora - (mon_cache.t or 0) < 0.4 then
+    return mon_cache.x, mon_cache.y, mon_cache.w, mon_cache.h
+  end
   local function ok(x, y, w, h)
-    if w and h and w > 400 and h > 300 then return x or 0, y or 0, w, h end
+    if w and h and w >= 640 and h >= 400 then return x or 0, y or 0, w, h end
   end
   local function ltrb(l, tp, rgt, bt)
     if type(l) ~= "number" or type(rgt) ~= "number" then return end
-    -- left,top,right,bottom
-    if (rgt - l) >= 800 and (bt - (tp or 0)) >= 500 then
-      return ok(l, tp or 0, rgt - l, bt - (tp or 0))
+    local cocoa = MT.EH_MAC and type(bt) == "number" and tp and tp > bt
+    local w, h = js_rect_tamanho(l, tp or 0, rgt, bt or 0, cocoa)
+    if w >= 640 and h >= 400 then
+      local y = tp or 0
+      if cocoa then
+        -- Cocoa: tp é o topo (Y maior). ImGui Y = altura_da_tela - tp.
+        -- Se bt é a base da área útil, a altura da tela primária costuma
+        -- ser o próprio tp da tela cheia; aqui h já é a área útil.
+        y = 0
+        -- Se o retângulo útil não começa no fundo, y = (bt medido a partir
+        -- da base) vira margem inferior; o topo ImGui fica tela - tp.
+        -- Sem a altura total, o melhor aproximado é 0 quando bt é pequeno.
+        if bt and bt > 8 then
+          -- área de trabalho acima do dock: topo ImGui = desconhecido.
+          -- Deixamos y=0 e deixamos o ImGui / GetMainViewport corrigir.
+        end
+      end
+      return ok(l, y, w, h)
     end
-    -- left,top,width,height (fallback)
-    if rgt >= 800 and (bt or 0) >= 500 then
+    if rgt >= 640 and (bt or 0) >= 400 then
       return ok(l, tp or 0, rgt, bt or 0)
     end
   end
-  local wx, wy, ww, wh = 80, 80, 1360, 820
+  local melhor
+  local function considerar(x, y, w, h)
+    local a, b, c, d = ok(x, y, w, h)
+    if not a then return end
+    if (not melhor) or (c * d > melhor[3] * melhor[4]) then
+      melhor = { a, b, c, d }
+    end
+  end
+
+  -- 1) Área de trabalho do viewport principal do ImGui (pontos, já com HiDPI)
+  if tem_imgui("GetMainViewport") and tem_imgui("Viewport_GetWorkPos") and tem_imgui("Viewport_GetWorkSize") then
+    local okv, vp = pcall(ImGui.GetMainViewport, ctx)
+    if okv and vp then
+      local x, y = ImGui.Viewport_GetWorkPos(vp)
+      local w, hmon = ImGui.Viewport_GetWorkSize(vp)
+      -- Só aceita se for claramente uma tela (não a própria janela flutuante)
+      local ww, wh = 0, 0
+      pcall(function() ww, wh = ImGui.GetWindowSize(ctx) end)
+      if w and hmon and (w >= 640 and hmon >= 400) and (w > (ww or 0) + 40 or hmon > (wh or 0) + 40 or ww < 50) then
+        considerar(x or 0, y or 0, w, hmon)
+      end
+      if tem_imgui("Viewport_GetPos") and tem_imgui("Viewport_GetSize") then
+        local px, py = ImGui.Viewport_GetPos(vp)
+        local sw, sh = ImGui.Viewport_GetSize(vp)
+        if sw and sh and (sw > (ww or 0) + 40 or sh > (wh or 0) + 40 or ww < 50) then
+          -- tela cheia; se Work* já entrou, esta só entra se for maior
+          considerar(px or 0, py or 0, sw, sh)
+        end
+      end
+    end
+  end
+
+  -- 2) js_ReaScriptAPI: área útil do monitor sob um ponto da janela
+  local wx, wy, ww, wh = 80, 80, 800, 600
   pcall(function()
     if ctx then
       wx, wy = ImGui.GetWindowPos(ctx)
       ww, wh = ImGui.GetWindowSize(ctx)
     end
   end)
-  local h = hwnd_painel()
-  if h then
-    local l, t, rgt, bt = js_rect(h)
+  local hwnd = hwnd_painel()
+  if hwnd then
+    local l, t, rgt, bt, cocoa = js_rect(hwnd)
     if l then
-      wx, wy = l, t or wy
-      ww, wh = (rgt or l) - l, (bt or t or 0) - (t or 0)
-      if ww < 10 then ww = 1360 end
-      if wh < 10 then wh = 820 end
+      local jw, jh = js_rect_tamanho(l, t, rgt, bt, cocoa)
+      if jw >= 10 then ww = jw end
+      if jh >= 10 then wh = jh end
+      if not cocoa then wx, wy = l, t or wy end
     end
   end
-  if r.JS_Window_GetViewportFromRect then
-    local okj, a1, a2, a3, a4, a5 = pcall(r.JS_Window_GetViewportFromRect, wx, wy, wx + ww, wy + wh, true)
-    if okj then
-      -- pcall + retorno boolean: true, left, top, right, bottom
-      local l, tp, rgt, bt
-      if type(a1) == "boolean" then
-        l, tp, rgt, bt = a2, a3, a4, a5
-      else
-        l, tp, rgt, bt = a1, a2, a3, a4
-      end
-      local a, b, c, d = ltrb(l, tp, rgt, bt)
-      if a then return a, b, c, d end
+  local function tentar_js_viewport(x1, y1, x2, y2)
+    if not r.JS_Window_GetViewportFromRect then return end
+    local okj, a1, a2, a3, a4, a5 = pcall(r.JS_Window_GetViewportFromRect, x1, y1, x2, y2, true)
+    if not okj then return end
+    local l, tp, rgt, bt
+    if type(a1) == "boolean" then
+      l, tp, rgt, bt = a2, a3, a4, a5
+    else
+      l, tp, rgt, bt = a1, a2, a3, a4
     end
+    local a, b, c, d = ltrb(l, tp, rgt, bt)
+    if a then considerar(a, b, c, d) end
   end
-  -- GetMainViewport só se for claramente maior que a janela atual
-  if tem_imgui("GetMainViewport") and tem_imgui("Viewport_GetWorkPos") and tem_imgui("Viewport_GetWorkSize") then
-    local okv, vp = pcall(ImGui.GetMainViewport, ctx)
-    if okv and vp then
-      local x, y = ImGui.Viewport_GetWorkPos(vp)
-      local w, hmon = ImGui.Viewport_GetWorkSize(vp)
-      if w and hmon and (w > ww + 80 or hmon > wh + 80) then
-        local a, b, c, d = ok(x, y, w, hmon)
-        if a then return a, b, c, d end
-      end
-    end
+  tentar_js_viewport(wx, wy, wx + ww, wy + wh)
+  -- no Mac, tenta também o canto da tela primária (coordenadas Cocoa e ImGui)
+  if MT.EH_MAC then
+    tentar_js_viewport(0, 0, 80, 80)
+    tentar_js_viewport(0, 600, 80, 680)
+  else
+    tentar_js_viewport(10, 10, 80, 80)
   end
-  return 0, 0, 1920, 1080
+
+  local x, y, w, h
+  if melhor then
+    x, y, w, h = melhor[1], melhor[2], melhor[3], melhor[4]
+  else
+    -- último recurso: não inventa 1920x1080 (estoura TV/notebook)
+    x, y, w, h = 0, MT.EH_MAC and 28 or 0, math.max(ww or 0, 1280), math.max(wh or 0, 720)
+  end
+  mon_cache = { t = agora, x = x, y = y, w = w, h = h }
+  return x, y, w, h
+end
+
+-- Tamanho/posição padrão que CABE na área útil. Em tela grande (ex.: 1920x1080
+-- no Windows) continua 1360x820. Em TV/notebook/Retina menor, encolhe e centra.
+local function geom_padrao()
+  local x, y, w, h = area_monitor()
+  local mx = (w < 1100) and 16 or 40
+  local my = (h < 800) and 16 or 24
+  local dw = math.min(1360, math.max(640, w - mx * 2))
+  local dh = math.min(820, math.max(480, h - my * 2))
+  local dx = x + math.max(0, math.floor((w - dw) / 2))
+  local dy = y + math.max(0, math.floor((h - dh) / 2))
+  return { x = dx, y = dy, w = dw, h = dh }
+end
+
+-- Encaixa a geometria na área útil (não fica gigante, minúscula nem fora).
+-- Devolve a geom e um boolean dizendo se precisou ajustar.
+local function encaixar_geom(g)
+  local x, y, w, h = area_monitor()
+  local gg = { x = tonumber(g and g.x) or x, y = tonumber(g and g.y) or y,
+               w = tonumber(g and g.w) or w, h = tonumber(g and g.h) or h }
+  local minw = math.min(1200, math.max(400, w - 24))
+  local minh = math.min(600, math.max(220, h - 24))
+  local nw = math.max(minw, math.min(gg.w, w))
+  local nh = math.max(minh, math.min(gg.h, h))
+  -- se a tela é menor que o mínimo "ideal", usa a tela inteira (com folga mínima)
+  if w < 900 then nw = math.max(400, w - 8) end
+  if h < 620 then nh = math.max(220, h - 8) end
+  local nx = math.max(x, math.min(gg.x, x + w - nw))
+  local ny = math.max(y, math.min(gg.y, y + h - nh))
+  local mudou = math.abs(nx - gg.x) >= 8 or math.abs(ny - gg.y) >= 8
+             or math.abs(nw - gg.w) >= 8 or math.abs(nh - gg.h) >= 8
+  return { x = nx, y = ny, w = nw, h = nh }, mudou
+end
+
+local function limites_janela()
+  local _, _, w, h = area_monitor()
+  local minw = math.min((janela._min_tmp and 900) or 1200, math.max(400, w - 24))
+  local minh = math.min(600, math.max(220, h - 24))
+  return minw, minh, math.max(minw, w), math.max(minh, h)
 end
 
 local function guardar_geom()
   local x, y = ImGui.GetWindowPos(ctx)
   local w, h = ImGui.GetWindowSize(ctx)
+  if not (w and h and w > 200 and h > 80) then return end
+  if janela.minimizado then return end
   janela.prev = { x = x, y = y, w = w, h = h }
   MT.set("JANELA_X", string.format("%.0f", x))
   MT.set("JANELA_Y", string.format("%.0f", y))
@@ -3233,13 +3341,15 @@ local function guardar_geom()
 end
 
 local function geom_salva()
-  if janela.prev and janela.prev.w and janela.prev.w > 0 then return janela.prev end
+  if janela.prev and janela.prev.w and janela.prev.w > 0 then
+    return encaixar_geom(janela.prev)
+  end
   local x, y = tonumber(MT.get("JANELA_X", "")), tonumber(MT.get("JANELA_Y", ""))
   local w, h = tonumber(MT.get("JANELA_W", "")), tonumber(MT.get("JANELA_H", ""))
   if w and h and w > 400 and h > 200 then
-    return { x = x or 80, y = y or 80, w = w, h = h }
+    return encaixar_geom({ x = x or 80, y = y or 80, w = w, h = h })
   end
-  return { x = 80, y = 80, w = 1360, h = 820 }
+  return geom_padrao()
 end
 
 local function pedir_geom(g)
@@ -3263,11 +3373,15 @@ local function aplicar_depois_do_begin()
   aplicar_depois = nil
   pcall(ImGui.SetWindowPos, ctx, p.x, p.y, ImGui.Cond_Always)
   pcall(ImGui.SetWindowSize, ctx, p.w, p.h, ImGui.Cond_Always)
-  local h = hwnd_painel()
-  if h then
-    -- JS: Resize/Move em pixels, caso o ImGui ignore o SetWindowSize
-    if r.JS_Window_Resize then pcall(r.JS_Window_Resize, h, math.floor(p.w + 0.5), math.floor(p.h + 0.5)) end
-    if r.JS_Window_Move then pcall(r.JS_Window_Move, h, math.floor(p.x + 0.5), math.floor(p.y + 0.5)) end
+  -- No Mac, JS_Window_Move/Resize usa coordenadas Cocoa (Y invertido) e, em
+  -- Retina, pode estar em pixels (não em pontos do ImGui). Mexer aqui
+  -- empurrava a janela para fora da tela. Só no Windows o JS ajuda.
+  if not MT.EH_MAC then
+    local h = hwnd_painel()
+    if h then
+      if r.JS_Window_Resize then pcall(r.JS_Window_Resize, h, math.floor(p.w + 0.5), math.floor(p.h + 0.5)) end
+      if r.JS_Window_Move then pcall(r.JS_Window_Move, h, math.floor(p.x + 0.5), math.floor(p.y + 0.5)) end
+    end
   end
 end
 
@@ -3840,6 +3954,21 @@ local function loop()
       end
     end
   end
+  -- Na 1ª abertura da sessão, aplica o tamanho padrão/salvo JÁ neste frame
+  -- (antes do Begin). Assim o .ini do ImGui não reabre a barra compacta
+  -- (620x44) quando o painel foi minimizado na sessão anterior, nem o
+  -- 1360x820 antigo que estoura telas como a TV 1360x768.
+  if not janela._abriu then
+    janela._abriu = true
+    local okg, g = pcall(function()
+      local s = geom_salva()
+      if s and tonumber(s.w) and tonumber(s.h) and s.w >= 800 and s.h >= 200 then
+        return s
+      end
+      return geom_padrao()
+    end)
+    if okg and g then pedir_geom(g) end
+  end
   aplicar_pedido()
   -- NÃO chamar SetNextWindowSize(..., FirstUseEver) no mesmo frame de um pedido:
   -- no ImGui a última chamada vence, e o FirstUseEver apagava o Cond_Always do
@@ -3849,9 +3978,14 @@ local function loop()
   elseif janela.maximizado then
     ImGui.SetNextWindowSizeConstraints(ctx, 400, 200, 10000, 10000)
   else
-    ImGui.SetNextWindowSize(ctx, 1360, 820, ImGui.Cond_FirstUseEver)
-    local minw = (janela._min_tmp and 900) or 1200
-    ImGui.SetNextWindowSizeConstraints(ctx, minw, 600, 10000, 10000)  -- 1200: cabe o botão IMPORTAR + 1 música do setlist
+    -- FirstUseEver só quando NÃO há pedido neste frame (a última SetNext* vence).
+    if not aplicar_depois then
+      local g0 = geom_padrao()
+      ImGui.SetNextWindowSize(ctx, g0.w, g0.h, ImGui.Cond_FirstUseEver)
+      ImGui.SetNextWindowPos(ctx, g0.x, g0.y, ImGui.Cond_FirstUseEver)
+    end
+    local minw, minh, maxw, maxh = limites_janela()
+    ImGui.SetNextWindowSizeConstraints(ctx, minw, minh, maxw, maxh)  -- mínimo cabe na tela; em tela grande segue 1200x600
   end
 
   local flags = FLAGS_JANELA
@@ -3860,6 +3994,18 @@ local function loop()
   end
   local visivel, aberto = ImGui.Begin(ctx, titulo_janela() .. "###MultitrackAoVivo", true, flags)
   if visivel then aplicar_depois_do_begin() end
+  -- Nas primeiras aberturas, se o tamanho salvo (ini/ExtState ou o antigo
+  -- 1360x820) estourar a tela do Mac, encaixa na área útil. Não interfere
+  -- depois que o usuário já ajustou e a janela cabe.
+  if visivel and not janela.minimizado and not janela.maximizado and not janela.pedido then
+    janela._aberturas = (janela._aberturas or 0) + 1
+    if janela._aberturas <= 3 then
+      local x, y = ImGui.GetWindowPos(ctx)
+      local w, h = ImGui.GetWindowSize(ctx)
+      local g, mudou = encaixar_geom({ x = x, y = y, w = w, h = h })
+      if mudou then pedir_geom(g) end
+    end
+  end
   local pediu_fechar = false
   local ok, err = true, nil
   if visivel then
@@ -3890,6 +4036,7 @@ local function loop()
     pcall(ImGui.End, ctx)
   end
   if pediu_fechar then aberto = false end
+  if not aberto then pcall(guardar_geom) end
 
   pcall(function()
     if F.base then ImGui.PopFont(ctx) end

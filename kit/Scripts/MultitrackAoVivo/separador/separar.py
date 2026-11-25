@@ -721,12 +721,16 @@ def principal(argv):
             carregar_modelo("htdemucs_6s")
             carregar_modelo("htdemucs_ft")
             _compat_runtime()
-            from audio_separator.separator import Separator
-            d = os.path.join(MOTOR, "modelos", "roformer")
-            os.makedirs(d, exist_ok=True)
-            sep = Separator(log_level=20, model_file_dir=d, output_dir=d)
-            sep.load_model(model_filename=ROFORMER_VOZ)
-            del sep
+            try:
+                from audio_separator.separator import Separator
+                d = os.path.join(MOTOR, "modelos", "roformer")
+                os.makedirs(d, exist_ok=True)
+                sep = Separator(log_level=20, model_file_dir=d, output_dir=d)
+                sep.load_model(model_filename=ROFORMER_VOZ)
+                del sep
+            except Exception as e:
+                log_device("BS-Roformer não baixado (%s: %s); o motor segue com Demucs." % (type(e).__name__, e))
+                print("AVISO: qualidade máxima indisponível neste computador; usando só o Demucs.", flush=True)
             print("MODELO_OK", flush=True)
             return 0
         print("Baixando o modelo %s (~80 MB)..." % nome, flush=True)
